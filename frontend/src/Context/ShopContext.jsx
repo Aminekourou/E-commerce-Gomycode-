@@ -17,12 +17,12 @@ const ShopContextProvider = (props) => {
     const [cartItems,setCartItems] = useState(getDefaultCart());
     
 useEffect (()=>{
-    fetch('http://localhost:4000/allproducts')
+    fetch('https://ideafit-mern.vercel.app/allproducts')
     .then((respponse)=> respponse.json())
     .then ((data)=>setAll_Product(data))
 
     if(localStorage.getItem('auth-token')){
-        fetch ('http://localhost:4000/getcart',{
+        fetch ('https://ideafit-mern.vercel.app/getcart',{
             method : 'POST',
             headers : {
                 Accept : 'application/form-data',
@@ -40,7 +40,7 @@ useEffect (()=>{
     const addToCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
         if (localStorage.getItem('auth-token')) {
-            fetch ('http://localhost:4000/addtocart',{
+            fetch ('https://ideafit-mern.vercel.app/addtocart',{
                 method : 'POST',
                 headers : {
                     Accept : 'application/data',
@@ -57,7 +57,7 @@ useEffect (()=>{
     const removeFromCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
         if(localStorage.getItem('auth-token')){
-            fetch ('http://localhost:4000/removefromcart',{
+            fetch ('https://ideafit-mern.vercel.app/removefromcart',{
                 method : 'POST',
                 headers : {
                     Accept : 'application/data',
