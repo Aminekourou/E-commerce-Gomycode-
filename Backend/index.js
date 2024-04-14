@@ -8,7 +8,13 @@ const path = require("path");
 const cors = require("cors");
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+    origin : ["https://ideafit.vercel.app"],
+    methods : ["POST","GET"],
+    credentials : true
+  }
+));
 
 // database Connection with MongoDB
 
